@@ -1,5 +1,5 @@
 {
-    "name": "lego_auto",
+    "name": "car1",
     "description": "",
     "dependencies": {
         "core": "*",
@@ -22,5 +22,5 @@
     "supportedTargets": [
         "microbit"
     ],
-    "preferredEditor": "blocksprj"
+    "preferredEditor": "tsprj"
 }
