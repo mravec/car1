@@ -1,5 +1,5 @@
 {
-    "name": "lego_auto",
+    "name": "car1",
     "description": "",
     "dependencies": {
         "core": "*",
@@ -15,10 +15,6 @@
     "testFiles": [
         "test.ts"
     ],
-    "targetVersions": {
-        "target": "4.0.9",
-        "targetId": "microbit"
-    },
     "supportedTargets": [
         "microbit"
     ],
