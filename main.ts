@@ -10,19 +10,6 @@ input.onButtonPressed(Button.A, function () {
         . . # . .
         . . # . .
         `)
-    if (prekazka < 20 && (lavyMotor > 0 || pravyMotor > 0)) {
-        vypis("  prekazka ")
-        cuteBot.motors(0, 0)
-        basic.pause(500)
-        cuteBot.motors(-40, -40)
-        basic.pause(1000)
-        cuteBot.motors(19, -42)
-        basic.pause(400)
-        cuteBot.motors(0, 0)
-        basic.pause(500)
-    } else {
-    	
-    }
 })
 function vypis (text: string) {
     s += 1
@@ -52,59 +39,6 @@ radio.onReceivedValue(function (name, value) {
         pravyMotor = value
     }
 })
-cuteBot.IR_callback(function () {
-    basic.pause(200)
-    if (cuteBot.IR_Button(cuteBot.IRButtons.Menu)) {
-        soundExpression.giggle.playUntilDone()
-        basic.showLeds(`
-            . . . . .
-            . . . . .
-            . . # . .
-            . . . . .
-            . . . . .
-            `)
-    }
-    if (cuteBot.IR_Button(cuteBot.IRButtons.Plus)) {
-        soundExpression.happy.playUntilDone()
-        basic.showLeds(`
-            . . . . .
-            . . . . .
-            . # # . .
-            . . . . .
-            . . . . .
-            `)
-    }
-    if (cuteBot.IR_Button(cuteBot.IRButtons.Back)) {
-        soundExpression.hello.playUntilDone()
-        basic.showLeds(`
-            . . . . .
-            . . . . .
-            . # # # .
-            . . . . .
-            . . . . .
-            `)
-    }
-    if (cuteBot.IR_Button(cuteBot.IRButtons.Down)) {
-        soundExpression.spring.playUntilDone()
-        basic.showLeds(`
-            . . . . .
-            . . . . .
-            . # # # #
-            . . . . .
-            . . . . .
-            `)
-        if (cuteBot.IR_Button(cuteBot.IRButtons.Zero)) {
-            soundExpression.spring.playUntilDone()
-            basic.showLeds(`
-                . . . . .
-                . . . . .
-                # # # # #
-                . . . . .
-                . . . . .
-                `)
-        }
-    }
-})
 input.onLogoEvent(TouchButtonEvent.Touched, function () {
     lavyMotor = 0
     pravyMotor = 0
@@ -132,7 +66,19 @@ s = 0
 soundExpression.happy.play()
 basic.forever(function () {
     prekazka = cuteBot.ultrasonic(cuteBot.SonarUnit.Centimeters)
-    cuteBot.motors(lavyMotor, pravyMotor)
-    vypis("  normal ")
+    if (prekazka < 20 && (lavyMotor > 0 || pravyMotor > 0)) {
+        vypis("  prekazka ")
+        cuteBot.motors(0, 0)
+        basic.pause(500)
+        cuteBot.motors(-55, -60)
+        basic.pause(2000)
+        cuteBot.motors(0, -60)
+        basic.pause(500)
+        cuteBot.motors(0, 0)
+        basic.pause(1000)
+    } else {
+        cuteBot.motors(lavyMotor, pravyMotor)
+        vypis("  normal ")
+    }
     basic.pause(100)
 })
