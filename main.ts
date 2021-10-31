@@ -66,16 +66,16 @@ s = 0
 soundExpression.happy.play()
 basic.forever(function () {
     prekazka = cuteBot.ultrasonic(cuteBot.SonarUnit.Centimeters)
-    if (prekazka < 20 && (lavyMotor > 0 || pravyMotor > 0)) {
+    if (prekazka < 40 && (lavyMotor > 0 || pravyMotor > 0)) {
         vypis("  prekazka ")
-        cuteBot.motors(0, 0)
-        basic.pause(500)
+        cuteBot.motors(-10, -10)
+        basic.pause(200)
         cuteBot.motors(-55, -60)
-        basic.pause(2000)
-        cuteBot.motors(0, -60)
         basic.pause(500)
+        cuteBot.motors(-23, -50)
+        basic.pause(200)
         cuteBot.motors(0, 0)
-        basic.pause(1000)
+        basic.pause(500)
     } else {
         cuteBot.motors(lavyMotor, pravyMotor)
         vypis("  normal ")
