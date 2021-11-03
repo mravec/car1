@@ -7,18 +7,15 @@ function vypis (text: string) {
 }
 radio.onReceivedString(function (receivedString) {
     if (receivedString == "A") {
-        lavyMotor = 100
-        pravyMotor = 100
+        pins.servoWritePin(AnalogPin.P2, 0)
     } else if (receivedString == "B") {
-        lavyMotor = -100
-        pravyMotor = -100
+        pins.servoWritePin(AnalogPin.P2, 180)
     } else if (receivedString == "AB") {
-        lavyMotor = 0
-        pravyMotor = 0
+        pins.servoWritePin(AnalogPin.P2, 90)
     } else if (receivedString == "C") {
-    	
+        pins.servoWritePin(AnalogPin.P1, 0)
     } else if (receivedString == "D") {
-    	
+        pins.servoWritePin(AnalogPin.P1, 100)
     } else if (receivedString == "E") {
     	
     } else if (receivedString == "F") {
