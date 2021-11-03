@@ -1,16 +1,3 @@
-input.onButtonPressed(Button.A, function () {
-    lavyMotor = 50
-    pravyMotor = 50
-    cuteBot.motors(50, 50)
-    soundExpression.spring.play()
-    basic.showLeds(`
-        . . # . .
-        . # # # .
-        # . # . #
-        . . # . .
-        . . # . .
-        `)
-})
 function vypis (text: string) {
     s += 1
     if (s > 1) {
@@ -18,24 +5,30 @@ function vypis (text: string) {
         serial.writeLine("lavyMotor" + lavyMotor + ", pravyMotor=" + pravyMotor + ", time=" + input.runningTime() + ", prekazka=" + prekazka + text)
     }
 }
-input.onButtonPressed(Button.B, function () {
-    lavyMotor = -50
-    pravyMotor = -50
-    cuteBot.motors(-50, -50)
-    soundExpression.slide.play()
-    basic.showLeds(`
-        . . # . .
-        . . # . .
-        # . # . #
-        . # # # .
-        . . # . .
-        `)
+radio.onReceivedString(function (receivedString) {
+    if (receivedString == "A") {
+        lavyMotor = 100
+        pravyMotor = 100
+    } else if (receivedString == "B") {
+        lavyMotor = -100
+        pravyMotor = -100
+    } else if (receivedString == "AB") {
+        lavyMotor = 0
+        pravyMotor = 0
+    } else if (receivedString == "C") {
+    	
+    } else if (receivedString == "D") {
+    	
+    } else if (receivedString == "E") {
+    	
+    } else if (receivedString == "F") {
+    	
+    }
 })
 radio.onReceivedValue(function (name, value) {
     if (name == "lv") {
         lavyMotor = value
-    }
-    if (name == "pv") {
+    } else if (name == "pv") {
         pravyMotor = value
     }
 })
